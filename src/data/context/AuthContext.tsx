@@ -13,7 +13,11 @@ interface AuthContextProps {
   logout?: () => Promise<void>
 }
 
-const AuthContext = createContext<AuthContextProps>({})
+const AuthContext = createContext<AuthContextProps>({
+  loginGoogle: function (): Promise<void> {
+    throw new Error("Function not implemented.");
+  }
+})
 
 async function usuarioNormalizado(usuarioFirebase: firebase.User): Promise<User> {
   const token = await usuarioFirebase.getIdToken()
